@@ -37,7 +37,6 @@ public class Processor {
                         "\tТест кейс 2: Описание";
 
         gui = new Gui(listener, testModel);
-//        process("test", gui.getModel());
     }
 
     public static void process(String cmd) {
@@ -49,11 +48,8 @@ public class Processor {
         Element root = new Element("map");
         root.setAttribute("version", "0.9.0");
         Element mainNode = new Element("node");
-//        mainNode.setAttribute("CREATED", "1405199120136");
-//        mainNode.setAttribute("ID", "ID_51579598");
-//        mainNode.setAttribute("MODIFIED", "1405247999456");
+
         mainNode.setAttribute("TEXT", testList[0]);
-//        mainNode.addContent(new Element("richcontent").setText(testModel).setAttribute("TYPE", "NOTE"));
 
         root.addContent(mainNode);
         Document doc = new Document(root);
@@ -117,13 +113,13 @@ public class Processor {
             System.err.println(e);
         }
 
-        System.out.println(result.toString().replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n",""));
         String res = result.toString().replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n","");
+
         try {
-            FileWriter fileWriter = new FileWriter("testSuiteTemplate.mm");
+            FileWriter fileWriter = new FileWriter(gui.getSrcFile(testList[0]+".mm"));
             fileWriter.write(res.toCharArray());
             fileWriter.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
