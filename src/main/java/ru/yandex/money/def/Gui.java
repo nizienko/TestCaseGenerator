@@ -61,7 +61,10 @@ public class Gui extends JFrame{
         dialog.setSelectedFile(new File(filename));
         dialog.setDialogType(JFileChooser.SAVE_DIALOG);
         dialog.setMultiSelectionEnabled(false);
-        dialog.showOpenDialog(this);
-        return dialog.getSelectedFile();
+        int res = dialog.showOpenDialog(this);
+        if (res == JFileChooser.APPROVE_OPTION) {
+            return dialog.getSelectedFile();
+        }
+        return null;
     }
 }
