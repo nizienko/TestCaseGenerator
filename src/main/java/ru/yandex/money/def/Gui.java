@@ -44,7 +44,8 @@ public class Gui extends JFrame{
         generateCases = new JMenuItem("Export to freeMind", KeyEvent.VK_E);
         menuModel.add(generateCases);
         textArea = new JTextArea(text);
-        mainPanel.add(textArea);
+        JScrollPane sp = new JScrollPane(textArea);
+        mainPanel.add(sp);
         generateCases.addActionListener(listener);
         generateCases.setActionCommand("export");
         this.setJMenuBar(menuBar);
